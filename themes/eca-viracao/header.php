@@ -22,37 +22,38 @@
 
 <body <?php body_class(); ?>>
 <div id="page" class="site">
-	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'eca-viracao' ); ?></a>
 
-	<header id="masthead" class="site-header">
-		<div class="site-branding">
-			<?php
-			the_custom_logo();
-			if ( is_front_page() && is_home() ) :
-				?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-				<?php
-			else :
-				?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-				<?php
-			endif;
-			$eca_viracao_description = get_bloginfo( 'description', 'display' );
-			if ( $eca_viracao_description || is_customize_preview() ) :
-				?>
-				<p class="site-description"><?php echo $eca_viracao_description; /* WPCS: xss ok. */ ?></p>
-			<?php endif; ?>
-		</div><!-- .site-branding -->
+	<span class="d-none loggedornot"><?php echo is_user_logged_in();  ?></span>
+	<span class="d-none logouturl"><?php echo wp_logout_url(home_url()); ?></span>
+<nav class="navbar navbar-expand-lg navbar-light bg-light" role="navigation">
+  <div class="container">
+	<!-- Brand and toggle get grouped for better mobile display -->
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<a class="navbar-brand" href="#"><?php the_custom_logo() ?></a>
+		<?php
+		wp_nav_menu( array(
+			'theme_location'    => 'menu-1',
+			'depth'             => 2,
+			'container'         => 'div',
+			'container_class'   => 'collapse navbar-collapse',
+			'container_id'      => 'bs-example-navbar-collapse-1',
+			'menu_class'        => 'nav navbar-nav ml-auto',
+			'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
+			'walker'            => new WP_Bootstrap_Navwalker(),
+		) );
+		?>
+	</div>
+</nav>
 
-		<nav id="site-navigation" class="main-navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'eca-viracao' ); ?></button>
-			<?php
-			wp_nav_menu( array(
-				'theme_location' => 'menu-1',
-				'menu_id'        => 'primary-menu',
-			) );
-			?>
-		</nav><!-- #site-navigation -->
-	</header><!-- #masthead -->
 
 	<div id="content" class="site-content">
+
+		<script>
+			if (jQuery('.loggedornot').html()) {
+				jQuery('.nav-item:last-child .nav-link').html('Sair').attr('href', jQuery('.logouturl').html())
+			} else {
+				jQuery('#menu-item-42, #menu-item-37, #menu-item-38').addClass('d-none')
+			}
+		</script>

@@ -122,7 +122,9 @@ add_action( 'widgets_init', 'eca_viracao_widgets_init' );
 function eca_viracao_scripts() {
 	wp_enqueue_style( 'eca-viracao-style', get_stylesheet_uri() );
 
-	wp_enqueue_script( 'eca-viracao-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
+	wp_enqueue_script( 'eca-viracao-jquery', 'https://code.jquery.com/jquery-3.3.1.min.js' );
+
+	wp_enqueue_script( 'eca-viracao-bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array(), '20151215', true );
 
 	wp_enqueue_script( 'eca-viracao-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
 
@@ -159,3 +161,90 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+// Bootstrap Navwalker
+require_once get_template_directory() . '/class-wp-bootstrap-navwalker.php';
+
+
+// Custom Post Types
+
+function create_post_types() {
+  register_post_type( 'video-aulas',
+    array(
+      'labels' => array(
+        'name' => __( 'Vídeo Aulas' ),
+        'singular_name' => __( 'Vídeo Aula' )
+      ),
+      'public' => true,
+      'has_archive' => true,
+      'show_in_rest' => true,
+      'menu_position' => 5,
+      'supports' => array('title', 'editor', 'custom-fields'),
+      'menu_icon' => "dashicons-format-video"
+    )
+  );
+  register_post_type( 'conceitos',
+    array(
+      'labels' => array(
+        'name' => __( 'Conceitos' ),
+        'singular_name' => __( 'Conceito' )
+      ),
+      'public' => true,
+      'has_archive' => true,
+      'show_in_rest' => true,
+      'menu_position' => 5,
+      'supports' => array('title', 'editor', 'custom-fields'),
+      'menu_icon' => "dashicons-welcome-learn-more"
+    )
+  );
+}
+add_action( 'init', 'create_post_types' );
+function revcon_change_post_object() {
+    global $wp_post_types;
+    $labels = &$wp_post_types['video-aulas']->labels;
+    $labels->name = 'Vídeo Aulas';
+    $labels->singular_name = 'Vídeo Aula';
+    $labels->add_new = 'Adicionar Vídeo Aula';
+    $labels->add_new_item = 'Adicionar Vídeo Aula';
+    $labels->edit_item = 'Editar Vídeo Aula';
+    $labels->new_item = 'Vídeo Aula';
+    $labels->view_item = 'Ver Vídeo Aulas';
+    $labels->search_items = 'Buscar Vídeo Aulas';
+    $labels->not_found = 'Não foram encontradas Vídeo Aulas';
+    $labels->not_found_in_trash = 'Não foram encontradas Vídeo Aulas na Lixeira';
+    $labels->all_items = 'Todas Vídeo Aulas';
+    $labels->menu_name = 'Vídeo Aulas';
+    $labels->name_admin_bar = 'Vídeo Aula';
+}
+function revcon_change_conceito_object() {
+    global $wp_post_types;
+    $labels = &$wp_post_types['conceitos']->labels;
+    $labels->name = 'Conceitos';
+    $labels->singular_name = 'Conceito';
+    $labels->add_new = 'Adicionar Conceito';
+    $labels->add_new_item = 'Adicionar Conceito';
+    $labels->edit_item = 'Editar Conceito';
+    $labels->new_item = 'Conceito';
+    $labels->view_item = 'Ver Conceitos';
+    $labels->search_items = 'Buscar Conceitos';
+    $labels->not_found = 'Não foram encontrados Conceitos';
+    $labels->not_found_in_trash = 'Não foram encontrados Conceitos na Lixeira';
+    $labels->all_items = 'Todos Conceitos';
+    $labels->menu_name = 'Conceitos';
+    $labels->name_admin_bar = 'Conceito';
+}
+add_action( 'init', 'revcon_change_post_object' );
+add_action( 'init', 'revcon_change_conceito_object' );
+
+
+// Custom experpt length
+function custom_short_excerpt($excerpt){
+	$limit = 100;
+
+	if (strlen($excerpt) > $limit) {
+		return substr($excerpt, 0, strpos($excerpt, ' ', $limit)) . ' (...)';
+	}
+
+	return $excerpt;
+}
+
+add_filter('the_excerpt', 'custom_short_excerpt');

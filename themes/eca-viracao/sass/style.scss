@@ -23,84 +23,67 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 /*--------------------------------------------------------------
 >>> TABLE OF CONTENTS:
 ----------------------------------------------------------------
-# Normalize
-# Typography
-# Elements
-# Forms
-# Navigation
-	## Links
-	## Menus
-# Accessibility
-# Alignments
-# Clearings
-# Widgets
-# Content
-	## Posts and pages
-	## Comments
-# Infinite scroll
-# Media
-	## Captions
-	## Galleries
+# Bootstrap
 --------------------------------------------------------------*/
-@import "variables-site/variables-site";
-@import "mixins/mixins-master";
+@import 'fonts';
+$orange: #FF4B00;
+$purple: #7547F4;
+$body: #707070;
+$light-blue: #00CEFF;
+$primary: $orange;
+$rounded: 'Simply Rounded', sans-serif;
+$font-family-sans-serif: 'Solomon Sans Book', sans-serif;
+@import 'bootstrap/bootstrap';
+body {
+	font-size: 16px;
+	font-weight: normal;
+	color: $body;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
+  text-shadow: rgba(0, 0, 0, .01) 0 0 1px;
+  font-weight: 600;
+}
+h1,h2,h3,h4 {
+	font-family: $rounded;
+}
 
-/*--------------------------------------------------------------
-# Normalize
---------------------------------------------------------------*/
-@import "normalize";
+h1 {
+	color: $primary;
+}
 
-/*--------------------------------------------------------------
-# Typography
---------------------------------------------------------------*/
-@import "typography/typography";
+img {
+	max-width: 100%;
+	height: auto;
+}
 
-/*--------------------------------------------------------------
-# Elements
---------------------------------------------------------------*/
-@import "elements/elements";
+.divisor {
+	background: #FF7C00;
+	height: 6px;
+	width: 160px;
+	margin-top: 15px;
+	margin-bottom: 10px;
+}
 
-/*--------------------------------------------------------------
-# Forms
---------------------------------------------------------------*/
-@import "forms/forms";
+.rapidinhas-item {
+	min-height: 360px;
+	border: 1px solid #dedede;
+	color: $body;
+	margin-bottom: 30px;
+	.meta {
+		padding: 15px;
+	}
+	h2 {
+		margin-top: 15px;
+		margin-bottom: 8px;
+		color: $purple;
+		font-size: 1rem;
+	}
+	p {
+		font-size: .8rem;
+	}
+}
 
-/*--------------------------------------------------------------
-# Navigation
---------------------------------------------------------------*/
-@import "navigation/navigation";
-
-/*--------------------------------------------------------------
-# Accessibility
---------------------------------------------------------------*/
-@import "modules/accessibility";
-
-/*--------------------------------------------------------------
-# Alignments
---------------------------------------------------------------*/
-@import "modules/alignments";
-
-/*--------------------------------------------------------------
-# Clearings
---------------------------------------------------------------*/
-@import "modules/clearings";
-
-/*--------------------------------------------------------------
-# Widgets
---------------------------------------------------------------*/
-@import "site/secondary/widgets";
-
-/*--------------------------------------------------------------
-# Content
---------------------------------------------------------------*/
-@import "site/site";
-
-/*--------------------------------------------------------------
-# Infinite scroll
---------------------------------------------------------------*/
-@import "modules/infinite-scroll";
-
-/*--------------------------------------------------------------
-# Media
---------------------------------------------------------------*/
-@import "media/media";
+@import 'header-footer';
+@import 'single';
