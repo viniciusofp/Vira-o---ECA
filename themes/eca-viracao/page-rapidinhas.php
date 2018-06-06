@@ -12,11 +12,11 @@
 	<div class="single-content">
 		<div class="container">
 			<div class="row justify-content-center">
-				<div class="col-12 col-md-4">
+				<div class="col-12 col-md-4 d-none">
 					<h1><?php the_title(); ?></h1>
 					<?php the_content(); ?>
 				</div>
-				<div class="col-12 col-md-8">
+				<div class="col-12 col-md-12">
 					<div class="row">
 						<?php 
 						$paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
@@ -30,7 +30,7 @@
 
 						if ( $the_query->have_posts() ) : ?>
 							<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
-							<div class="col-6 col-lg-4">
+							<div class="col-6 col-lg-3">
 								<a href="<?php the_permalink(); ?>">
 									<div class="rapidinhas-item">
 										<?php the_post_thumbnail('thumbnail') ?>

@@ -26,7 +26,7 @@
 				    	<div class="row justify-content-center" style="height: 420px">
 								<div class="col-11 col-sm-10 col-lg-8 align-self-center">
 									<div class="">
-										<h1><?php the_title(); ?></h1>
+										<a href="<?php the_permalink(); ?>"><h1><?php the_title(); ?></h1></a>
 									</div>
 									
 								</div>
@@ -47,8 +47,51 @@
 		  </div>
 		</div>
 </div>
+<div class="single-content">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 align-self-center">
+				<h1 class="big"><?php the_title(); ?></h1>
+				<?php the_content(); ?>
+			</div>
+			<div class="col-md-6 align-self-center">
+				<?php the_post_thumbnail(); ?>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-12 text-center">
+				<h1 class="big">Escolha um conceito para se aprofundar</h1>
+			</div>
+		</div>
 
-	<h1><?php the_title(); ?></h1>
-	<?php the_content(); ?>
+		<div class="row text-center mt-4">
+			<?php 
+			$args = array(
+				'post_type' => 'conceitos',
+			  'posts_per_page' => -1,
+			);
+
+			$the_query = new WP_Query( $args ); 
+
+			if ( $the_query->have_posts() ) : ?>
+				<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+				<div class="col-12 col-md conceito-home">
+					<a href="<?php the_permalink(); ?>">
+						<div class="icon"><?php the_post_thumbnail('thumbnail'); ?></div>
+						
+						<h2><?php the_title(); ?></h2>
+					</a>
+				</div>
+				<?php endwhile; ?>
+				<?php wp_reset_postdata(); ?>
+			<?php endif; ?>
+		</div>
+	</div>
+		
+
+	</div>
+</div>
 <?php endwhile; endif ?>
 <?php get_footer() ?>

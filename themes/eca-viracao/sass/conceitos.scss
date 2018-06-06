@@ -1,0 +1,120 @@
+.conceitos-menu {
+	border-bottom: 1px solid #dedede;
+	margin-bottom: 30px;
+	ul {
+		margin-bottom: 0;
+	}
+	a {
+		display: inline-block;
+		font-weight: 800;
+		font-family: $rounded;
+		font-size: 1.3rem;
+		padding: 20px 0 15px;
+		margin-right: 15px;
+		@media all and (max-width: 767px) {
+			font-size: .8rem;
+		}
+	}
+	.active {
+		border-bottom: 5px solid $orange;
+	}
+}
+.timeline {
+	text-align: center;
+	h3 {
+		color: $purple;
+		font-size: 1rem;
+	}
+	ul {
+		margin-left: 0;
+		padding-left: 0;
+		li {
+			display: table;
+			margin: 0 auto;
+			padding-left: 0;
+			list-style: none;
+			.title {
+				display: inline-block;
+				color: #360060;
+				font-weight: 800;
+				font-family: $rounded;
+			}
+			.year {
+				position: relative;
+				display: block;
+				width: 111px;
+				height: 80px;
+				padding: 30px;
+				margin: 10px auto 45px;
+				background-image: url('img/timeline.png');
+				background-size: contain;
+				background-position: center;
+				background-repeat: no-repeat;
+				color: $white;
+				font-family: $rounded;
+				font-weight: 800;
+			}
+			.year::after {
+				content: '';
+				position: absolute;
+				width: 2px;
+				height: 30px;
+				background-color: $light-blue;
+				bottom: -40px;
+				left: 50%;
+				transform: translate(-50%, 0);
+			}
+			&:last-child .year::after {
+				display: none;
+			}
+		}
+	}
+}
+
+.popover {
+    border: 2px solid $purple;
+    padding: 15px 20px;
+    .arrow::before {
+    	border-left-color: $purple;
+    }
+    .arrow::before, .arrow::after {
+			border-width: .5rem 0 .5rem .5rem !important;
+    }
+    .arrow::after {
+			right: 3px;
+    }
+}
+
+
+.conceitos-footer {
+	text-align: center;
+	color: $white;
+	background: #FF7C00;
+	font-size: 1.3rem;
+	p {
+		max-width: 500px;
+		margin: 0 auto;
+		font-family: $rounded;
+	}
+	h1 {
+		color: $white;
+	}  
+	.maonamassa {
+		padding: 30px;
+		background: #f3b402;
+	}
+	.quiz {
+		padding: 30px;
+		background: #FF7C00;
+	}
+	.btn {
+		margin-top: 30px;
+		background: $purple;
+		color: $white;
+		font-family: $rounded;
+		font-weight: bolder;
+		&:hover {
+			background: darken($purple, 10%);
+		}
+	}
+}

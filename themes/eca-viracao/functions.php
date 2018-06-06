@@ -121,11 +121,14 @@ add_action( 'widgets_init', 'eca_viracao_widgets_init' );
  */
 function eca_viracao_scripts() {
 	wp_enqueue_style( 'eca-viracao-fontawesome', "https://use.fontawesome.com/releases/v5.0.13/css/all.css" );
+
 	wp_enqueue_style( 'eca-viracao-style', get_stylesheet_uri() );
 
 	wp_enqueue_script( 'eca-viracao-jquery', 'https://code.jquery.com/jquery-3.3.1.min.js' );
 
-	wp_enqueue_script( 'eca-viracao-bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array(), '20151215', true );
+	// wp_enqueue_script( 'eca-viracao-popover', get_template_directory_uri() . '/js/popover.js', array(), '20151215', true );
+
+	wp_enqueue_script( 'eca-viracao-bootstrap', get_template_directory_uri() . '/js/bootstrap.bundle.min.js', array(), '20151215', true );
 
 	wp_enqueue_script( 'eca-viracao-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
 
@@ -183,6 +186,34 @@ function create_post_types() {
       'menu_icon' => "dashicons-format-video"
     )
   );
+  register_post_type( 'mao-na-massa',
+    array(
+      'labels' => array(
+        'name' => __( 'Mão na Massa' ),
+        'singular_name' => __( 'Mão na Massa' )
+      ),
+      'public' => true,
+      'has_archive' => true,
+      'show_in_rest' => true,
+      'menu_position' => 5,
+      'supports' => array('title', 'editor', 'custom-fields'),
+      'menu_icon' => "dashicons-admin-tools"
+    )
+  );
+  register_post_type( 'quiz',
+    array(
+      'labels' => array(
+        'name' => __( 'Quiz' ),
+        'singular_name' => __( 'Quiz' )
+      ),
+      'public' => true,
+      'has_archive' => true,
+      'show_in_rest' => true,
+      'menu_position' => 5,
+      'supports' => array('title', 'editor', 'custom-fields'),
+      'menu_icon' => "dashicons-admin-tools"
+    )
+  );
   register_post_type( 'conceitos',
     array(
       'labels' => array(
@@ -193,7 +224,7 @@ function create_post_types() {
       'has_archive' => true,
       'show_in_rest' => true,
       'menu_position' => 5,
-      'supports' => array('title', 'editor', 'custom-fields'),
+      'supports' => array('title', 'editor', 'custom-fields', 'thumbnail'),
       'menu_icon' => "dashicons-welcome-learn-more"
     )
   );

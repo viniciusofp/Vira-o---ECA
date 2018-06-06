@@ -1,4 +1,4 @@
-<?php get_header() ?>
+<?php get_header(); ?>
 <?php if (have_posts()): while(have_posts()) : the_post(); ?>
 	<div class="single-header">
 		<div class="container">
@@ -26,7 +26,7 @@
 				</div>
 				<div class="col-12 col-md-4 col-lg-3 offset-lg-1 ">
 					<div class="row">
-						<div class="col-12mt-4">
+						<div class="col-12 mt-4">
 							<h1>+ Rapidinhas</h1>
 						</div>
 						<?php 
