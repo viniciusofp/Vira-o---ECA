@@ -37,12 +37,6 @@
 	h1 {
 		margin-bottom: 20px;
 	}
-	h2 {
-		font-size: 1.5rem;
-		font-family: $rounded;
-		font-weight: 800;
-		color: #360060;
-	}
 	.the-post {
 		p {
 			line-height: 1.8;
@@ -50,6 +44,12 @@
 		img {
 			margin-bottom: 30px;
 		}	
+		h2 {
+			font-size: 1.5rem;
+			font-family: $rounded;
+			font-weight: 800;
+			color: #360060;
+		}
 	}
 	
 }

@@ -85,6 +85,7 @@
 				}
 			})
 		})
+		jQuery('.btn-primary').css('pointer-events', 'none');
 		jQuery('.quiz-resultado').append('<p>Você acertou ' + certas + ' de ' + perguntas.length + ' perguntas.</p>')
 	}
 </script>
