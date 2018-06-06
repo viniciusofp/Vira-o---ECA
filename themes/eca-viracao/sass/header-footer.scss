@@ -4,6 +4,9 @@
 	.custom-logo {
 		height: 80px;
 		width: auto;
+		@media all and (max-width: 991px) {
+			height: 60px;
+		}
 	}
 	.menu-item.active a.nav-link {
 		color: $body;

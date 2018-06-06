@@ -2,12 +2,23 @@
 	background: $body;
 	background-image: url('img/pattern.jpg');
 	background-repeat: repeat-x;
-	background-size: contain;
+	// background-size: contain;
+	background-attachment: fixed;
 	h1 {
 		margin-top: 6rem;
 		margin-bottom: 6rem;
-		font-size: 6rem;
+		font-size: 4rem;
 		color: $white;
+	}
+}
+@media all and (max-width: 767px) {
+	.single-header {
+		h1 {
+			margin-top: 3rem;
+			margin-bottom: 3rem;
+			font-size: 3rem;
+			color: $white;
+		}
 	}
 }
 .single-featured {
@@ -20,4 +31,19 @@
 .single-content {
 	margin-top: 45px;
 	margin-bottom: 60px;
+	.heateor_ffc_facebook_comments_title {
+		display: none;
+	}
+	h1 {
+		margin-bottom: 20px;
+	}
+	.the-post {
+		p {
+			line-height: 1.8;
+		}
+		img {
+			margin-bottom: 30px;
+		}	
+	}
+	
 }

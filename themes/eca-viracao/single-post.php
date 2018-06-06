@@ -4,7 +4,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-12">
-					<h1><?php the_title(); ?></h1>
+					<h1>Rapidinhas</h1>
 				</div>
 			</div>
 		</div>
@@ -12,25 +12,34 @@
 	<div class="single-content">
 		<div class="container">
 			<div class="row justify-content-center">
-				<div class="col-12 col-md-4">
+				<div class="col-12 col-md-8 the-post">
+					<div class="divisor"></div>
 					<h1><?php the_title(); ?></h1>
+					<div class="mb-1">
+						<small><?php the_date(); ?></small>
+					</div>
+					<?php the_post_thumbnail(); ?>
 					<?php the_content(); ?>
+					<?php 
+					$content = '[Fancy_Facebook_Comments]';
+					echo apply_filters('the_content', $content); ?>
 				</div>
-				<div class="col-12 col-md-8">
+				<div class="col-12 col-md-4 col-lg-3 offset-lg-1 ">
 					<div class="row">
+						<div class="col-12mt-4">
+							<h1>+ Rapidinhas</h1>
+						</div>
 						<?php 
-						$paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 						$args = array(
 							'post_type' => 'post',
-						  'posts_per_page' => 6,
-						  'paged'          => $paged
+						  'posts_per_page' => 3,
 						);
 
 						$the_query = new WP_Query( $args ); 
 
 						if ( $the_query->have_posts() ) : ?>
 							<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
-							<div class="col-6 col-lg-4">
+							<div class="col-12">
 								<a href="<?php the_permalink(); ?>">
 									<div class="rapidinhas-item">
 										<?php the_post_thumbnail('thumbnail') ?>
@@ -45,10 +54,6 @@
 
 							<?php wp_reset_postdata(); ?>
 
-							<!-- pagination here -->
-							<?php if (function_exists("pagination")) {
-				        pagination($the_query->max_num_pages);
-				      } ?>
 						<?php endif; ?>
 					</div>
 				</div>
