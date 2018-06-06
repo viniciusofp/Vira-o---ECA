@@ -132,5 +132,6 @@ $mao_na_massa_url = get_field('mao_na_massa')[0]->guid;
 	jQuery(function () {
 	  jQuery('[data-toggle="popover"]').popover()
 	})
+
 </script>
 <?php get_footer() ?>

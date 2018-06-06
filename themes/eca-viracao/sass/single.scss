@@ -37,6 +37,12 @@
 	h1 {
 		margin-bottom: 20px;
 	}
+	h2 {
+		font-size: 1.5rem;
+		font-family: $rounded;
+		font-weight: 800;
+		color: #360060;
+	}
 	.the-post {
 		p {
 			line-height: 1.8;
@@ -46,4 +52,71 @@
 		}	
 	}
 	
+}
+
+.quiz-options {
+	margin-left: 0;
+	padding-left: 0;
+	li {
+		max-width: 500px;
+		margin-left: 0;
+		padding: 15px;
+		margin-top: 15px;
+		margin-bottom: 15px;
+		list-style: none;
+		border: 3px solid #dedede;
+		border-radius: 8px;
+		background: $white;
+		cursor: pointer;
+		transition: .3s;
+		&.certa {
+			border-color: $green!important;
+			color: $green!important;
+		}
+		&.errada {
+			border-color: $red!important;
+			color: $red!important;
+		}
+
+		&:hover {
+			background: #f1f1f1;
+		}
+		&.selecionado {
+			h6 {
+				background: $purple;
+				color: $white;
+			}
+		}
+		h6 {
+			text-align: center;
+			font-weight: 800;
+			height: 30px;
+    	width: 30px;
+    	padding: 4px 0 0 0px;
+			background: $white;
+			border: 2px solid $purple;
+			color: $purple;
+			font-family: $rounded;
+			border-radius: 100%;
+			float: left;
+			margin: -8px 15px 15px -31px;
+		}
+	}
+}
+.btn-lg.btn-primary {
+	width: 100%;
+	max-width: 500px;
+	text-align: center;
+	font-weight: 800;
+	font-family: $rounded;
+}
+.quiz-resultado {
+	p {
+		text-align: center;
+		margin-top: 30px;
+		border: 2px solid #dedede;
+		border-radius: 8px;
+		padding: 30px;
+		font-size: 1.6rem;
+	}
 }
