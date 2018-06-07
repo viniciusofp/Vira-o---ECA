@@ -86,9 +86,11 @@
 		}
 		&.certa:not(.selecionado) h6 {
 			border-color: $green!important;
+			color: $green!important;
 		}
 		&.errada:not(.selecionado) h6 {
 			border-color: $red!important;
+			color: $red!important;
 		}
 
 		&:hover {

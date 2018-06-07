@@ -32,7 +32,7 @@ $body: #707070;
 $light-blue: #00CEFF;
 $primary: $orange;
 $rounded: 'Simply Rounded', sans-serif;
-$font-family-sans-serif: 'Solomon Sans Book', sans-serif;
+$font-family-sans-serif: 'Raleway', sans-serif;
 @import 'bootstrap/bootstrap';
 body {
 	font-size: 17px;
@@ -205,3 +205,9 @@ img {
 @import 'header-footer';
 @import 'single';
 @import 'conceitos';
+
+
+
+#bbpress-forums * {
+    font-size: 16px!important;
+}
