@@ -47,13 +47,20 @@
 		h2 {
 			font-size: 1.5rem;
 			font-family: $rounded;
-			font-weight: 800;
+			font-weight: 600;
 			color: #360060;
 		}
 	}
 	
 }
-
+.question {
+	margin-top: 45px;
+	margin-bottom: 30px;
+	color: $orange!important;
+	small {
+		color: #360060;
+	}
+}
 .quiz-options {
 	margin-left: 0;
 	padding-left: 0;
@@ -64,7 +71,7 @@
 		margin-top: 15px;
 		margin-bottom: 15px;
 		list-style: none;
-		border: 3px solid #dedede;
+		border: 2px solid #dedede;
 		border-radius: 8px;
 		background: $white;
 		cursor: pointer;
@@ -77,29 +84,36 @@
 			border-color: $red!important;
 			color: $red!important;
 		}
+		&.certa:not(.selecionado) h6 {
+			border-color: $green!important;
+		}
+		&.errada:not(.selecionado) h6 {
+			border-color: $red!important;
+		}
 
 		&:hover {
 			background: #f1f1f1;
 		}
 		&.selecionado {
 			h6 {
-				background: $purple;
+				border: 2px solid $orange;
+				background: $orange;
 				color: $white;
 			}
 		}
 		h6 {
 			text-align: center;
 			font-weight: 800;
-			height: 30px;
-    	width: 30px;
-    	padding: 4px 0 0 0px;
+	    height: 40px;
+	    width: 40px;
+	    padding: 10px 0 0 0px;
 			background: $white;
-			border: 2px solid $purple;
-			color: $purple;
+			border: 2px solid #dedede;
+			color: $orange;
 			font-family: $rounded;
 			border-radius: 100%;
 			float: left;
-			margin: -8px 15px 15px -31px;
+    	margin: -8px 15px 15px -36px;
 		}
 	}
 }
@@ -109,9 +123,11 @@
 	text-align: center;
 	font-weight: 800;
 	font-family: $rounded;
+	margin-top: 15px;
 }
 .quiz-resultado {
 	p {
+		max-width: 500px;
 		text-align: center;
 		margin-top: 30px;
 		border: 2px solid #dedede;

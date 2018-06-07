@@ -16,18 +16,20 @@
 					<div class="divisor"></div>
 					<h1 class="big"><?php the_title(); ?></h1>
 					<?php the_content(); ?>
-					<?php if( have_rows('pergunta') ): while ( have_rows('pergunta') ) : the_row();
+					<?php $loop = 1; if( have_rows('pergunta') ): while ( have_rows('pergunta') ) : the_row();
 					?>
-					
-					        <h2><?php the_sub_field('enunciado');?></h2>
-					        <ul class="quiz-options">
-									<?php $loop = 1; if( have_rows('opcao') ): while ( have_rows('opcao') ) : the_row();?>
-										<li data-value="<?php the_sub_field('boolean');?>">
-											<h6><?php echo $loop; $loop++ ?></h6>
-											<?php the_sub_field('resposta');?>
-										</li>
-									<?php endwhile; else : endif; ?>
-					        </ul>
+		        <h2 class="question"><?php echo $loop; $loop++ ?>. <small><?php the_sub_field('enunciado');?></small></h2>
+		        <ul class="quiz-options">
+						<?php 
+						$letters = array('A','B','C','D','E','F','G');
+						$counter = 0;
+						if( have_rows('opcao') ): while ( have_rows('opcao') ) : the_row();?>
+							<li data-value="<?php the_sub_field('boolean');?>">
+								<h6><?php echo $letters[$counter]; $counter++ ?></h6>
+								<?php the_sub_field('resposta');?>
+							</li>
+						<?php endwhile; else : endif; ?>
+		        </ul>
 					<?php endwhile; else : endif; ?>
 					<button class="btn btn-primary btn-lg d-none" onclick="resultado()">Veja seu resultado no quiz!</button>
 					<div class="quiz-resultado"></div>
@@ -39,6 +41,9 @@
 	
 <?php endwhile; endif ?>
 <script>
+	var scrollToBottom = function() {
+		jQuery("html, body").animate({ scrollTop: $(document).height()-$(window).height() });
+	}
 	var ready = false;
 	jQuery('.quiz-options li').click(function() {
 		jQuery(this).siblings().removeClass('selecionado');
@@ -60,7 +65,8 @@
 			ready = true;
 		}
 		if (ready) {
-			jQuery('.btn-primary').removeClass('d-none')
+			jQuery('.btn-primary').removeClass('d-none');
+			scrollToBottom();
 		}
 	})
 
@@ -86,7 +92,10 @@
 			})
 		})
 		jQuery('.btn-primary').css('pointer-events', 'none');
-		jQuery('.quiz-resultado').append('<p>Você acertou ' + certas + ' de ' + perguntas.length + ' perguntas.</p>')
+		jQuery('.quiz-resultado').empty().append('<p>Você acertou ' + certas + ' de ' + perguntas.length + ' perguntas.</p>');
+			scrollToBottom();
+		jQuery('.certa h6').empty().append('<i class="fas fa-check"></i>');
+		jQuery('.errada h6').empty().append('<i class="fas fa-times"></i>');
 	}
 </script>
 <?php get_footer() ?>
