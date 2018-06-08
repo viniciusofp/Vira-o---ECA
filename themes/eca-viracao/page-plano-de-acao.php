@@ -30,15 +30,18 @@
 				<?php while ( $the_query->have_posts() ) : $the_query->the_post(); 
 				$content = get_the_content();
 				$content = wp_filter_nohtml_kses( $content );
+				$resposta_1 = get_field('resposta_1');
+
 				?>
 					 <!-- New Post Form -->
 					<div id="postbox">
 					<form id="new_post" name="new_post" method="post" action="">
 					<p><label for="description">Description</label><br />
-					<input class="form-control" id="description" tabindex="3" name="description" cols="50" rows="6" value="<?php echo $content ?>"/>
+
+					<textarea class="form-control" id="description" tabindex="3" name="description" cols="50" rows="6"><?php echo $content ?></textarea>
 					</p>
 					<p><label for="resposta_1">Voce acha que esse site está dando certo?</label><br />
-					<input class="form-control" tabindex="3" name="resposta_1" id="resposta_1" cols="50" rows="6" value="<?php the_field('resposta_1'); ?>"/>
+					<textarea class="form-control" tabindex="3" name="<?php the_field('resposta_1'); ?>" id="resposta_1" cols="50" rows="6"><?php echo $resposta_1 ?></textarea>
 
 					<p align="right"><button class="mt-3 form-control btn btn-lg btn-outline-primary" type="submit" value="Publish" tabindex="6" id="submit" name="submit">Atualizar</button></p>
 
@@ -61,9 +64,6 @@
 			 <!-- New Post Form -->
 			<div id="postbox">
 			<form id="new_post" name="new_post" method="post" action="">
-			<p><label for="title">Title</label><br />
-			<input class="form-control" type="text" id="title" value="" tabindex="1" size="20" name="title" />
-			</p>
 			<p><label for="description">Description</label><br />
 			<textarea class="form-control" id="description" tabindex="3" name="description" cols="50" rows="6"></textarea>
 			</p>

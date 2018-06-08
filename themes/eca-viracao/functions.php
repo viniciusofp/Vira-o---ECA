@@ -371,17 +371,21 @@ if( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) &&  $_POS
 				    );
 			endif;
 
+			$action = 'atualizou';
 		  //save the new post and return its ID
 		  $pid = wp_update_post($new_post); 
 
 		else :
-
+			$action = 'criou';
 		  $pid = wp_insert_post($new_post); 
 
 		endif;
+		$plano_link = get_the_permalink($pid);
+		$subject = 'ECA: ' . $user_info->user_nicename . ' ' . $action . ' enviou um Plano de Ação';
+		$message = $user_info->first_name . $user_info->last_name . '(' . $user_info->user_email . ') ' . $action . ' um Plano de Ação no site da Escola de Cidadania para Adolescentes. Veja em: ' . $plano_link;
 
 		update_field('resposta_1',$_POST['resposta_1'],$pid);
-
+		wp_mail( 'viniciusofp@gmail.com', 'The subject', 'The message' );
     // wp_redirect(home_url());
 
 }
