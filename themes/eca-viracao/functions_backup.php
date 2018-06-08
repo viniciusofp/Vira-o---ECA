@@ -344,7 +344,7 @@ require get_template_directory() . '/inc/plano-process.php';
 
 
 
-function my_acf_add_local_field($slug, $label) {
+function my_acf_add_local_field_groups($slug, $label) {
 	acf_add_local_field(array(
 		'key' => $slug,
 		'label' => $label,
@@ -353,25 +353,32 @@ function my_acf_add_local_field($slug, $label) {
 		'parent' => 'group_5b19af6a9cd9e',
 	));
 }
-
-
-function my_acf_add_local_field_groups() {
-
+function my_acf_add_local_fields() {
+	acf_add_local_field_group(array(
+		'key' => 'group_5b19af6a9cd9e',
+		'title' => 'Planos de Ação - Posts',
+		'fields' => array (),
+		'location' => array (
+			array (
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'planos-de-acao',
+				),
+			),
+		),
+	));
 	$i = 1;
 	if( have_rows('perguntas', 27) ):
-	while( have_rows('perguntas', 27) ): the_row();
-		$respostaKey = 'resposta_'. $i;
-		$label = get_sub_field('pergunta');
+	while( have_rows('perguntas') ): the_row();
 		acf_add_local_field(array(
-			'key' => $respostaKey,
-			'label' => $label,
-			'name' => $respostaKey,
+			'key' => 'resposta_'. $i,
+			'label' => get_sub_field('pergunta'),
+			'name' => 'resposta_'. $i,
 			'type' => 'textarea',
 			'parent' => 'group_5b19af6a9cd9e',
 		));
 		$i++;
 	endwhile; endif;
-	
 }
-
-add_action('acf/init', 'my_acf_add_local_field_groups');
+add_action('init', 'my_acf_add_local_fields');

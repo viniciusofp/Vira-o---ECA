@@ -238,7 +238,7 @@ function create_post_types() {
       'has_archive' => true,
       'show_in_rest' => true,
       'menu_position' => 5,
-      'supports' => array('title', 'custom-fields'),
+      'supports' => array('title', 'editor', 'custom-fields'),
       'menu_icon' => "dashicons-welcome-learn-more"
     )
   );
@@ -344,33 +344,23 @@ require get_template_directory() . '/inc/plano-process.php';
 
 
 
-function my_acf_add_local_field($slug, $label) {
-	acf_add_local_field(array(
-		'key' => $slug,
-		'label' => $label,
-		'name' => $slug,
-		'type' => 'textarea',
-		'parent' => 'group_5b19af6a9cd9e',
-	));
-}
-
-
 function my_acf_add_local_field_groups() {
+	acf_add_local_field(array(
+		'key' => 'resposta_1',
+		'label' => 'Sub Title',
+		'name' => 'sub_title',
+		'type' => 'text',
+		'parent' => 'group_5b19af6a9cd9e'
+	));
+	acf_add_local_field(array(
+		'key' => 'resposta_2',
+		'label' => 'Sub Titlezera',
+		'name' => 'sub_title',
+		'type' => 'text',
+		'parent' => 'group_5b19af6a9cd9e'
+	));
 
-	$i = 1;
-	if( have_rows('perguntas', 27) ):
-	while( have_rows('perguntas', 27) ): the_row();
-		$respostaKey = 'resposta_'. $i;
-		$label = get_sub_field('pergunta');
-		acf_add_local_field(array(
-			'key' => $respostaKey,
-			'label' => $label,
-			'name' => $respostaKey,
-			'type' => 'textarea',
-			'parent' => 'group_5b19af6a9cd9e',
-		));
-		$i++;
-	endwhile; endif;
+	print_r('ococococococo');
 	
 }
 

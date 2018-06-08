@@ -1,4 +1,6 @@
-<?php get_header(); ?>
+<?php get_header();
+$user_info = get_userdata( get_current_user_id() );
+?>
 <?php if (have_posts()): while(have_posts()) : the_post(); ?>
 	<div class="single-header">
 		<div class="container">
@@ -13,95 +15,83 @@
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-12 col-md-10 the-post">
-
-
-<?php
-		$user_info = get_userdata( get_current_user_id() ); 
-		if (the_slug_exists($user_info->user_nicename,'planos-de-acao')) :
-
-			$args = array(
-				'name' => $user_info->user_nicename,
-			  'post_type'   => 'planos-de-acao'
-			);
-			$the_query = new WP_Query( $args );
-			if ( $the_query->have_posts() ) : ?>
-
-				<!-- the loop -->
-				<?php while ( $the_query->have_posts() ) : $the_query->the_post(); 
-				$content = get_the_content();
-				$content = wp_filter_nohtml_kses( $content );
-				$resposta_1 = get_field('resposta_1');
-
-				?>
-					 <!-- New Post Form -->
-					<div id="postbox">
+					<?php the_content(); ?>
 					<form id="new_post" name="new_post" method="post" action="">
-					<p><label for="description">Description</label><br />
+						<?php if (the_slug_exists($user_info->user_nicename,'planos-de-acao')):
+							$args = array(
+								'name' => $user_info->user_nicename,
+							  'post_type'   => 'planos-de-acao'
+							);
+							$the_query = new WP_Query( $args );
+							if ( $the_query->have_posts() ) :
+							while ( $the_query->have_posts() ) : $the_query->the_post(); 
+							$i = 1;
+							?>
 
-					<textarea class="form-control" id="description" tabindex="3" name="description" cols="50" rows="6"><?php echo $content ?></textarea>
-					</p>
-					<p><label for="resposta_1">Voce acha que esse site está dando certo?</label><br />
-					<textarea class="form-control" tabindex="3" name="<?php the_field('resposta_1'); ?>" id="resposta_1" cols="50" rows="6"><?php echo $resposta_1 ?></textarea>
+								<?php if( have_rows('perguntas', 27) ):
+													$perguntaCount = 1;
+													?>
+								<?php while( have_rows('perguntas', 27) ): the_row(); 
+									// vars
+									$pergunta = get_sub_field('pergunta');
+									$explicacao = get_sub_field('explicacao');
+									$respostaName = 'resposta_' . $perguntaCount;
+									$perguntaName = 'pergunta_' . $perguntaCount;
+									$value = get_field('resposta_'.$i);
+									?>
+									<h3 class="mt-5"><?php echo $perguntaCount; ?>. <?php echo $pergunta; ?></h3>
+									<p><?php echo $explicacao; ?></p>
+									<textarea class="form-control mt-3" name="<?php echo $respostaName ?>" id="" cols="30" rows="10"><?php echo $value; ?></textarea>
+									<input type="hidden" name="<?php echo $perguntaName ?>" value="<?php echo $pergunta; ?>" />
+									<?php $perguntaCount++; $i++ ?>
+								<?php endwhile;endif;?>
+		
+							<?php endwhile; ?>
+							<?php wp_reset_postdata(); ?>
+							<?php endif; ?>
 
-					<p align="right"><button class="mt-3 form-control btn btn-lg btn-outline-primary" type="submit" value="Publish" tabindex="6" id="submit" name="submit">Atualizar</button></p>
+							<p align="right"><button class="mt-3 form-control btn btn-lg btn-outline-primary" type="submit" value="Publish" tabindex="6" id="submit" name="submit">Atualizar</button></p>
+							<input type="hidden" name="loops" value="<?php echo $perguntaCount ?>" />
+							<input type="hidden" name="action" value="new_plano" />
+							<?php wp_nonce_field( 'new-post' ); ?>
 
-					<input type="hidden" name="action" value="new_plano" />
-					<?php wp_nonce_field( 'new-post' ); ?>
-					</form>
-					</div>
-					<!--// New Post Form -->
-				<?php endwhile; ?>
+							</form>
 
-				<?php wp_reset_postdata(); ?>
+						<?php else: ?>
 
-			<?php else : ?>
-				<p><?php esc_html_e( 'Sorry, no posts matched your criteria.' ); ?></p>
-			<?php endif; ?>
+							<form id="new_post" name="new_post" method="post" action="">
 
+								<?php if( have_rows('perguntas') ):
+								$perguntaCount = 1;
+								?>
+								<?php while( have_rows('perguntas') ): the_row(); 
+									// vars
+									$pergunta = get_sub_field('pergunta');
+									$explicacao = get_sub_field('explicacao');
+									$respostaName = 'resposta_' . $perguntaCount;
+									$perguntaName = 'pergunta_' . $perguntaCount;
+									?>
+									<h3 class="mt-5"><?php echo $perguntaCount; ?>. <?php echo $pergunta; ?></h3>
+									<p><?php echo $explicacao; ?></p>
+									<textarea class="form-control mt-3" name="<?php echo $respostaName ?>" id="" cols="30" rows="10" value="<?php echo get_field('resposta_'.$i); ?>"></textarea>
+									<input type="hidden" name="<?php echo $perguntaName ?>" value="<?php echo $pergunta; ?>" />
+									<?php $perguntaCount++; $i++ ?>
+								<?php endwhile; endif; ?>
 
+								<p align="right"><button class="mt-3 form-control btn btn-lg btn-outline-primary" type="submit" value="Publish" tabindex="6" id="submit" name="submit">Atualizar</button></p>
+								<input type="hidden" name="loops" value="<?php echo $perguntaCount ?>" />
+								<input type="hidden" name="action" value="new_plano" />
+								<?php wp_nonce_field( 'new-post' ); ?>
 
-		<?php else :?>
-			 <!-- New Post Form -->
-			<div id="postbox">
-			<form id="new_post" name="new_post" method="post" action="">
-			<p><label for="description">Description</label><br />
-			<textarea class="form-control" id="description" tabindex="3" name="description" cols="50" rows="6"></textarea>
-			</p>
-			<p><label for="resposta_1">Voce acha que esse site está dando certo?</label><br />
-			<textarea class="form-control" tabindex="3" name="resposta_1" id="resposta_1" cols="50" rows="6"></textarea>
+							</form>
 
-			<p align="right"><input type="submit" value="Publish" tabindex="6" id="submit" name="submit" /></p>
-
-			<input type="hidden" name="action" value="new_plano" />
-			<?php wp_nonce_field( 'new-post' ); ?>
-			</form>
-			</div>
-			<!--// New Post Form -->
-		<?php endif;?>
-
-
-
+					<?php endif; ?>
 
 				</div>
 			</div>
 		</div>
 	</div>
-<?php endwhile; endif;
-
-
-
-
-
-
-?>
+<?php endwhile; endif;?>
 
 <?php get_footer() ?>
 
-
-
-
-
-
-?>
-
-<?php get_footer() ?>
