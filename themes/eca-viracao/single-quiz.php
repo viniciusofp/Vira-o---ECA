@@ -9,6 +9,35 @@
 			</div>
 		</div>
 	</div>
+	<div class="conceitos-menu">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<ul class="list-inline">
+						<?php 
+							$args = array(
+								'post_type' => 'quiz',
+							  'posts_per_page' => -1,
+							);
+
+							$the_query = new WP_Query( $args ); 
+
+							if ( $the_query->have_posts() ) : ?>
+								<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+								<li class="list-inline-item">
+									<a href="<?php the_permalink(); ?>">
+										<?php the_title(); ?>
+									</a>
+								</li>
+								<?php endwhile; ?>
+								<?php wp_reset_postdata(); ?>
+							<?php endif; ?>
+					</ul>
+				</div>			
+			</div>
+	
+		</div>
+	</div>
 	<div class="single-content">
 		<div class="container">
 			<div class="row justify-content-center">
@@ -41,10 +70,20 @@
 	
 <?php endwhile; endif ?>
 <script>
+
+	var links = jQuery('.conceitos-menu li a');
+	for (var i = links.length - 1; i >= 0; i--) {
+		var linkHref = jQuery(links[i]).attr('href');
+		if (linkHref == window.location.href ) {
+			jQuery(links[i]).addClass('active')
+		}
+	}
+
 	var scrollToBottom = function() {
 		jQuery("html, body").animate({ scrollTop: $(document).height()-$(window).height() });
 	}
 	var ready = false;
+
 	jQuery('.quiz-options li').click(function() {
 		jQuery(this).siblings().removeClass('selecionado');
 		jQuery(this).addClass('selecionado');

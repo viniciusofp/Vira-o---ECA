@@ -224,7 +224,21 @@ function create_post_types() {
       'has_archive' => true,
       'show_in_rest' => true,
       'menu_position' => 5,
-      'supports' => array('title', 'editor', 'custom-fields', 'thumbnail'),
+      'supports' => array('title', 'editor', 'custom-fields'),
+      'menu_icon' => "dashicons-welcome-learn-more"
+    )
+  );
+  register_post_type( 'planos-de-acao',
+    array(
+      'labels' => array(
+        'name' => __( 'Planos de Ação' ),
+        'singular_name' => __( 'Plano de Ação' )
+      ),
+      'public' => true,
+      'has_archive' => true,
+      'show_in_rest' => true,
+      'menu_position' => 5,
+      'supports' => array('title', 'editor', 'custom-fields'),
       'menu_icon' => "dashicons-welcome-learn-more"
     )
   );
@@ -307,4 +321,67 @@ function pagination($pages = '', $range = 2) {
 		if ($paged < $pages-1 && $paged+$range-1 < $pages && $showitems < $pages) echo "<a href='".get_pagenum_link($pages)."'><i class='fas fa-angle-double-right'></i></a>";
 		echo "</div>\n";
 	}
+}
+
+function the_slug_exists($post_name, $post_type) {
+    global $wpdb;
+    if($wpdb->get_row("SELECT post_name FROM wp_posts WHERE post_name = '" . $post_name . "' AND post_type = '" . $post_type . "'", 'ARRAY_A')) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+
+if( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) &&  $_POST['action'] == "new_plano") {
+
+
+    if (isset ($_POST['description'])) {
+        $description = $_POST['description'];
+    } else {
+        echo 'Please enter the content';
+    }
+    $tags = $_POST['post_tags'];
+
+		$user_info = get_userdata( get_current_user_id() ); 
+    // Add the content of the form to $post as an array
+    $new_post = array(
+        'post_title'    => $user_info->user_nicename,
+        'post_content'  => $description,
+        'post_status'   => 'publish',
+        'post_type' => 'planos-de-acao'
+    );
+
+		if (the_slug_exists($user_info->user_nicename,'planos-de-acao')) :
+
+			$args = array(
+			  'name'        => $user_info->user_nicename,
+			  'post_type'   => 'planos-de-acao',
+			  'post_status' => 'publish',
+			  'numberposts' => 1
+			);
+			$my_posts = get_posts($args);
+			if( $my_posts ) :
+			      $new_post = array(
+			      		'ID' => $my_posts[0]->ID,
+				        'post_title'    => $user_info->user_nicename,
+				        'post_content'  => $description,
+				        'post_status'   => 'publish',
+				        'post_type' => 'planos-de-acao'
+				    );
+			endif;
+
+		  //save the new post and return its ID
+		  $pid = wp_update_post($new_post); 
+
+		else :
+
+		  $pid = wp_insert_post($new_post); 
+
+		endif;
+
+		update_field('resposta_1',$_POST['resposta_1'],$pid);
+
+    // wp_redirect(home_url());
+
 }
