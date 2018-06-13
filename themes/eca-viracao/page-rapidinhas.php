@@ -12,7 +12,7 @@
 	<div class="single-content">
 		<div class="container">
 			<div class="row justify-content-center">
-				<div class="col-12 col-md-4 d-none">
+				<div class="col-12 col-md-3 d-none">
 					<h1><?php the_title(); ?></h1>
 					<?php the_content(); ?>
 				</div>
@@ -30,10 +30,18 @@
 
 						if ( $the_query->have_posts() ) : ?>
 							<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
-							<div class="col-6 col-lg-3">
+							<div class="col-6 col-lg-4">
 								<a href="<?php the_permalink(); ?>">
 									<div class="rapidinhas-item">
-										<?php the_post_thumbnail('thumbnail') ?>
+										<?php if (has_post_thumbnail()): ?>
+										<?php the_post_thumbnail('thumbnail') ?>	
+										<?php else : ?>
+											<div class="text-center" style="padding: 55px 15px; background: #ddd">
+												<?php the_custom_logo(); ?>
+											</div>
+											
+										<?php endif; ?>
+										
 										<div class="meta">
 											<h2><?php the_title(); ?></h2>
 											<?php the_excerpt(); ?>

@@ -23,7 +23,7 @@
 						<div class="container-fluid">
 				    	<div class="shadow"></div>
 				    	<div class="bg" style="background-image: url(<?php the_post_thumbnail_url('large'); ?>);"></div>
-				    	<div class="row justify-content-center" style="height: 420px">
+				    	<div class="row justify-content-center" style="height: 360px">
 								<div class="col-11 col-sm-10 col-lg-8 align-self-center">
 									<div class="">
 										<a href="<?php the_permalink(); ?>"><h1><?php the_title(); ?></h1></a>

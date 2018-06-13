@@ -14,7 +14,7 @@ $user_info = get_userdata( get_current_user_id() );
 	<div class="single-content">
 		<div class="container">
 			<div class="row justify-content-center">
-				<div class="col-12 the-post">
+				<div class="col-12 col-lg-8 the-post">
 					<?php the_content(); ?>
 					<form id="new_post" name="new_post" method="post" action="">
 						<?php if (the_slug_exists($user_info->user_nicename,'planos-de-acao')):

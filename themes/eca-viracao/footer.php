@@ -13,6 +13,22 @@
 
 	</div><!-- #content -->
 
+<div class="footer">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-2 text-right"><h3>MENU</h3></div>
+			<div class="col-lg-4 menu">
+				<?php wp_nav_menu(); ?>
+			</div>
+			<div class="col-lg-2"></div>
+			<div class="col-lg-2"></div>
+			<div class="col-lg-2"></div>
+			<div class="col-lg-2"></div>
+		</div>
+	</div>
+</div>
+
+
 	<footer id="colophon" class="site-footer">
 		<div class="site-info">
 			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'eca-viracao' ) ); ?>">
