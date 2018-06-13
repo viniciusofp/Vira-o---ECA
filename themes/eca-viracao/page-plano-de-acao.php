@@ -14,7 +14,7 @@ $user_info = get_userdata( get_current_user_id() );
 	<div class="single-content">
 		<div class="container">
 			<div class="row justify-content-center">
-				<div class="col-12 col-md-10 the-post">
+				<div class="col-12 the-post">
 					<?php the_content(); ?>
 					<form id="new_post" name="new_post" method="post" action="">
 						<?php if (the_slug_exists($user_info->user_nicename,'planos-de-acao')):
@@ -41,7 +41,7 @@ $user_info = get_userdata( get_current_user_id() );
 									?>
 									<h3 class="mt-5"><?php echo $perguntaCount; ?>. <?php echo $pergunta; ?></h3>
 									<p><?php echo $explicacao; ?></p>
-									<textarea class="form-control mt-3" name="<?php echo $respostaName ?>" id="" cols="30" rows="10"><?php echo $value; ?></textarea>
+									<textarea class="form-control mt-3" id="<?php echo $respostaName ?>" name="<?php echo $respostaName ?>" id="" cols="30" rows="10"><?php echo $value; ?></textarea>
 									<input type="hidden" name="<?php echo $perguntaName ?>" value="<?php echo $pergunta; ?>" />
 									<?php $perguntaCount++; $i++ ?>
 								<?php endwhile;endif;?>
@@ -50,7 +50,7 @@ $user_info = get_userdata( get_current_user_id() );
 							<?php wp_reset_postdata(); ?>
 							<?php endif; ?>
 
-							<p align="right"><button class="mt-3 form-control btn btn-lg btn-outline-primary" type="submit" value="Publish" tabindex="6" id="submit" name="submit">Atualizar</button></p>
+							<p><button class="mt-4 btn btn-primary" type="submit" value="Publish" tabindex="6" id="submit" name="submit">Atualizar</button></p>
 							<input type="hidden" name="loops" value="<?php echo $perguntaCount ?>" />
 							<input type="hidden" name="action" value="new_plano" />
 							<?php wp_nonce_field( 'new-post' ); ?>

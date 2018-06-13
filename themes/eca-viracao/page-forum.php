@@ -12,8 +12,11 @@
 	<div class="single-content">
 		<div class="container">
 			<div class="row justify-content-center">
-				<div class="col-12 the-post">
+				<div class="col-12 col-md-9 the-post">
 					<?php the_content(); ?>
+				</div>
+				<div class="col-12 col-md-3 the-post">
+					<?php get_sidebar(); ?>
 				</div>
 			</div>
 		</div>

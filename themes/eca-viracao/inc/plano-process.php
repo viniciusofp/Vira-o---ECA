@@ -37,12 +37,12 @@
 		  $pid = wp_insert_post($new_post); 
 
 		endif;
+		
 		for ($i=1; $i <= $_POST['loops']; $i++) {
 			$slug = 'resposta_' . $i;
 			$perguntaName = 'pergunta_' . $i;
 			$label = $_POST[$perguntaName];
 			$value = $_POST[$slug];
-			my_acf_add_local_field($slug, $label);
 			update_field($slug,$value,$pid);
 		}
 
