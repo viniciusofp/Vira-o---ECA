@@ -36,7 +36,7 @@
 										<?php if (has_post_thumbnail()): ?>
 										<?php the_post_thumbnail('thumbnail') ?>	
 										<?php else : ?>
-											<div class="text-center" style="padding: 55px 15px; background: #ddd">
+											<div class="text-center" style="padding: 56px 15px; background: #ddd">
 												<?php the_custom_logo(); ?>
 											</div>
 											
