@@ -61,7 +61,7 @@
 			if (jQuery('.loggedornot').html()) {
 				jQuery('.nav-item:last-child .nav-link').html('Sair').attr('href', jQuery('.logouturl').html())
 			} else {
-				jQuery('.menu-item-42, .menu-item-37, .menu-item-38').addClass('d-none')
+				jQuery('.menu-item-42, .menu-item-37, .menu-item-179').addClass('d-none')
 			}
 		</script>
 <?php wp_footer(); ?>

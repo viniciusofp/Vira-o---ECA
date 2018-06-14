@@ -242,6 +242,20 @@ function create_post_types() {
       'menu_icon' => "dashicons-welcome-learn-more"
     )
   );
+  register_post_type( 'mapeamentos',
+    array(
+      'labels' => array(
+        'name' => __( 'Mapeamentos' ),
+        'singular_name' => __( 'Mapeamento' )
+      ),
+      'public' => true,
+      'has_archive' => true,
+      'show_in_rest' => true,
+      'menu_position' => 5,
+      'supports' => array('title', 'custom-fields'),
+      'menu_icon' => "dashicons-welcome-learn-more"
+    )
+  );
 }
 add_action( 'init', 'create_post_types' );
 function revcon_change_post_object() {
@@ -344,34 +358,3 @@ require get_template_directory() . '/inc/plano-process.php';
 
 
 
-function my_acf_add_local_field($slug, $label) {
-	acf_add_local_field(array(
-		'key' => $slug,
-		'label' => $label,
-		'name' => $slug,
-		'type' => 'textarea',
-		'parent' => 'group_5b19af6a9cd9e',
-	));
-}
-
-
-function my_acf_add_local_field_groups() {
-
-	$i = 1;
-	if( have_rows('perguntas', 27) ):
-	while( have_rows('perguntas', 27) ): the_row();
-		$respostaKey = 'resposta_'. $i;
-		$label = get_sub_field('pergunta');
-		acf_add_local_field(array(
-			'key' => $respostaKey,
-			'label' => $label,
-			'name' => $respostaKey,
-			'type' => 'textarea',
-			'parent' => 'group_5b19af6a9cd9e',
-		));
-		$i++;
-	endwhile; endif;
-	
-}
-
-add_action('acf/init', 'my_acf_add_local_field_groups');
