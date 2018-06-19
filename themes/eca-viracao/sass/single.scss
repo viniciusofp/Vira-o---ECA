@@ -1,9 +1,14 @@
+
 .single-header {
 	background: $body;
 	background-image: url('img/pattern.jpg');
 	background-repeat: repeat-x;
 	// background-size: contain;
 	background-attachment: fixed;
+	&.header-foto {
+		background-size: cover;
+		background-repeat: no-repeat;
+	}
 	h1 {
 		margin-top: 4rem;
 		margin-bottom: 4rem;

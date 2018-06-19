@@ -5,7 +5,7 @@ get_header();?>
 $user_info = get_userdata( get_current_user_id() );
 $theID = get_the_ID();
 $thisPost = $post;?>
-	<div class="single-header">
+	<div class="single-header header-foto" style="background-image: url(<?php echo the_post_thumbnail_url('full'); ?>)">
 		<div class="container">
 			<div class="row">
 				<div class="col-12">

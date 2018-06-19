@@ -2,7 +2,7 @@
 $video = the_field('video') ?>
 						
 <?php if (have_posts()): while(have_posts()) : the_post(); ?>
-	<div class="single-header">
+	<div class="single-header header-foto" style="background-image: url(<?php echo the_post_thumbnail_url('full'); ?>)">
 		<div class="container">
 			<div class="row">
 				<div class="col-12">

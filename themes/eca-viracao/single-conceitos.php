@@ -3,7 +3,7 @@
 $quiz_url = get_field('quiz')[0]->guid;
 $mao_na_massa_url = get_field('mao_na_massa')[0]->guid;
 ?>
-	<div class="single-header">
+	<div class="single-header header-foto" style="background-image: url(<?php echo the_post_thumbnail_url('full'); ?>)">
 		<div class="container">
 			<div class="row">
 				<div class="col-12">

@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 <?php if (have_posts()): while(have_posts()) : the_post(); ?>
-	<div class="single-header">
+	<div class="single-header header-foto" style="background-image: url(<?php echo the_post_thumbnail_url('full'); ?>)">
 		<div class="container">
 			<div class="row">
 				<div class="col-12">
@@ -18,7 +18,6 @@
 					<div class="mb-1">
 						<small><?php the_date(); ?></small>
 					</div>
-					<?php the_post_thumbnail(); ?>
 					<?php the_content(); ?>
 					<?php 
 					$content = '[Fancy_Facebook_Comments]';
