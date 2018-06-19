@@ -19,7 +19,7 @@ $video = the_field('video') ?>
 				$class = '';
 				$args = array(
 					'post_type' => 'video-aulas',
-				  'posts_per_page' => 6
+				  'posts_per_page' => -1
 				);
 
 				$the_query = new WP_Query( $args ); 
@@ -61,7 +61,7 @@ $video = the_field('video') ?>
 				$i = 0;
 				$args = array(
 					'post_type' => 'video-aulas',
-				  'posts_per_page' => 6
+				  'posts_per_page' => -1
 				);
 				$the_query = new WP_Query( $args ); 
 				if ( $the_query->have_posts() ) : ?>
@@ -77,6 +77,14 @@ $video = the_field('video') ?>
 					<?php wp_reset_postdata(); ?>
 				<?php endif; ?>	
 		</div>
+		
+  	<div class="row">
+  		<div class="col-12">
+  			<?php 
+				$content = '[Fancy_Facebook_Comments]';
+				echo apply_filters('the_content', $content); ?>
+  		</div>
+  	</div>
 	</div>
 	
 <?php endwhile; endif ?>

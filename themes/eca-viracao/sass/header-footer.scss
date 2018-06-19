@@ -64,12 +64,16 @@
 	color: white;
 	padding-bottom: 30px;
 	font-size: 15px;
+	@media all and (max-width: 575px) {
+		text-align: center;
+	}
 	hr {
 		margin-bottom: 30px;
 	}
 	h5 {
 		font-weight: 800;
 		margin-bottom: 15px;
+		text-transform: uppercase;
 	}
 	.menu {
 		ul {

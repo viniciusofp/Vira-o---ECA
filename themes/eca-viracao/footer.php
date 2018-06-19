@@ -30,25 +30,21 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-6 col-lg-3">
-				<h5>FALE CONOSCO</h5>
-				<p>contato@viracao.org <br>(11) 3237-4091</p>
+				<?php if ( is_active_sidebar( 'contato-footer' ) ) : ?>
+						<?php dynamic_sidebar( 'contato-footer' ); ?>
+				<?php endif; ?>
 			</div>
 			<div class="col-sm-6 col-lg-3">
-				<h5>REDES SOCIAIS</h5>
+				<?php if ( is_active_sidebar( 'social-footer' ) ) : ?>
 				<ul class="menu" style="padding-left: 0">
-					<li>
-						<a target="_blank" href="#"><i class="fab fa-facebook"></i></a>
-					</li>
-					<li>
-						<a target="_blank" href="#"><i class="fab fa-twitter"></i></a>
-					</li>
-					<li>
-						<a target="_blank" href="#"><i class="fab fa-instagram"></i></a>
-					</li>
+						<?php dynamic_sidebar( 'social-footer' ); ?>
 				</ul>
+				<?php endif; ?>
 			</div>
 			<div class="col-sm-12 col-lg-6">
-				<p><small>© Viração Nossos conteúdos são livres. Republique-os à vontade, basta dar os créditos à Viração.</small></p>
+				<?php if ( is_active_sidebar( 'creditos-footer' ) ) : ?>
+						<?php dynamic_sidebar( 'creditos-footer' ); ?>
+				<?php endif; ?>
 				<a target="_blank" href="http://viracao.org/"><img src="<?php echo get_template_directory_uri(); ?>/img/viracao-logo.png" alt="" class="mb-3"></a>
 			</div>
 

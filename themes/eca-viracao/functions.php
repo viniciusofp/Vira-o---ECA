@@ -113,6 +113,33 @@ function eca_viracao_widgets_init() {
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
 	) );
+	register_sidebar( array(
+		'name'          => esc_html__( 'Social Media Footer', 'eca-viracao' ),
+		'id'            => 'social-footer',
+		'description'   => esc_html__( 'Add widgets here.', 'eca-viracao' ),
+		'before_widget' => '',
+		'after_widget'  => '',
+		'before_title'  => '<h5 class="widget-title">',
+		'after_title'   => '</h5>',
+	) );
+	register_sidebar( array(
+		'name'          => esc_html__( 'Contact Footer', 'eca-viracao' ),
+		'id'            => 'contato-footer',
+		'description'   => esc_html__( 'Add widgets here.', 'eca-viracao' ),
+		'before_widget' => '',
+		'after_widget'  => '',
+		'before_title'  => '<h5 class="widget-title">',
+		'after_title'   => '</h5>',
+	) );
+	register_sidebar( array(
+		'name'          => esc_html__( 'Créditos Footer', 'eca-viracao' ),
+		'id'            => 'creditos-footer',
+		'description'   => esc_html__( 'Add widgets here.', 'eca-viracao' ),
+		'before_widget' => '',
+		'after_widget'  => '',
+		'before_title'  => '',
+		'after_title'   => '',
+	) );
 }
 add_action( 'widgets_init', 'eca_viracao_widgets_init' );
 
@@ -350,6 +377,7 @@ function the_slug_exists($post_name, $post_type) {
 // New Plano de Ação process POST
 
 require get_template_directory() . '/inc/plano-process.php';
+require get_template_directory() . '/inc/social-media-widget.php';
 
 
 

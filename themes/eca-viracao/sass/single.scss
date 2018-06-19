@@ -121,6 +121,14 @@
 				background: $orange;
 				color: $white;
 			}
+			&.certa h6 {
+				background: $green;
+				border: 2px solid $green;
+			}
+			&.errada h6 {
+				background: $red;
+				border: 2px solid $red;
+			}
 		}
 		h6 {
 			text-align: center;
@@ -156,4 +164,11 @@
 		padding: 30px;
 		font-size: 1.6rem;
 	}
+}
+.resposta_correta {
+	padding: 15px;
+  background: #ededed;
+  border-radius: 8px;
+  color: $black;
+  margin: 15px 25px 15px 15px;
 }

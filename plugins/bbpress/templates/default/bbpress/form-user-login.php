@@ -29,13 +29,15 @@
 		</div>
 
 		<?php do_action( 'login_form' ); ?>
-
 		<div class="bbp-submit-wrapper">
 
 			<button class="btn btn-primary form-control" type="submit" tabindex="<?php bbp_tab_index(); ?>" name="user-submit" class="button submit user-submit"><?php _e( 'Log In', 'bbpress' ); ?></button>
 
 			<?php bbp_user_login_fields(); ?>
 
+		</div>
+		<div class="esqueci mt-3">
+			<a href="<?php echo home_url('/?page_id=15') ?>"><strong>Esqueci minha senha</strong></a>
 		</div>
 	</fieldset>
 </form>
