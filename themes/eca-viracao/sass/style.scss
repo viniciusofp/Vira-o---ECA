@@ -66,6 +66,10 @@ img {
 	height: auto;
 }
 
+a:hover {
+	text-decoration: none;
+}
+
 button {
 	@extend .btn;
   @extend .btn-primary;
@@ -85,7 +89,6 @@ button {
 
 .rapidinhas-item {
 	min-height: 360px;
-	border: 1px solid #dedede;
 	color: $body;
 	margin-bottom: 30px;
 	transition: .3s;
@@ -155,9 +158,15 @@ button {
 		transform: scale(1.1);
 	}
 }
-
+.home-header.single-header .container-fluid {
+	height: 400px;
+	max-height: 400px;
+	@media all and (max-width: 767px) {
+		max-height: 300px;
+	}
+}
 #home-rapidinhas-slide {
-	
+	height: 100%;
 	.container-fluid {
 		position: relative;
 	}
@@ -187,6 +196,10 @@ button {
 }
 
 .conceito-home {
+	transition: .3s;
+	&:hover {
+		transform: scale(1.05);
+	}
 	.icon {
 		display: block;
 		margin: 0 auto 20px;
@@ -209,31 +222,7 @@ button {
 @import 'header-footer';
 @import 'single';
 @import 'conceitos';
-
-
-
-#bbpress-forums { 
-		font-size: 1rem;
-    // * {
-    // 	font-size: 16px!important;
-    // }
-    .bbp-topic-title {
-    	font-size: 1.3em;
-    }
-}
-
-
-.bbp-pagination-links a, .bbp-pagination-links span.current {
-    padding: 3px 10px;
-}
-//////
-
-.bbp-login-form {
-	max-width: 500px;
-	margin: 15px auto;
-	border: 1px solid #dedede;
-	padding: 15px;
-}
+@import 'forum';
 
 
 

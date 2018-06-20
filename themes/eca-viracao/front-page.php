@@ -1,7 +1,7 @@
 <?php get_header() ?>
 <?php if (have_posts()): while(have_posts()) : the_post(); ?>
 
-<div class="single-header">
+<div class="home-header single-header">
 		<div id="home-rapidinhas-slide" class="carousel slide" data-ride="carousel">
 			<div class="carousel-inner">
 		  	<?php
@@ -23,7 +23,7 @@
 						<div class="container-fluid">
 				    	<div class="shadow"></div>
 				    	<div class="bg" style="background-image: url(<?php the_post_thumbnail_url('large'); ?>);"></div>
-				    	<div class="row justify-content-center" style="height: 360px">
+				    	<div class="row justify-content-center" style="height: 100%">
 								<div class="col-11 col-sm-10 col-lg-8 align-self-center">
 									<div class="">
 										<a href="<?php the_permalink(); ?>"><h1><?php the_title(); ?></h1></a>
@@ -60,11 +60,6 @@
 		</div>
 	</div>
 	<div class="container">
-		<div class="row">
-			<div class="col-12 text-center">
-				<h1 class="big">Escolha um conceito para se aprofundar</h1>
-			</div>
-		</div>
 
 		<div class="row text-center mt-4">
 			<?php 

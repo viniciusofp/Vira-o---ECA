@@ -88,7 +88,7 @@ $thisPost = $post;?>
 					<?php endwhile; ?>
 					<?php wp_reset_postdata(); ?>
 					<?php endif; ?>
-						<p><button class="mt-4 btn btn-primary" type="submit" value="Publish" tabindex="6" id="submit" name="submit">Atualizar</button></p>
+						<p><button class="mt-4 btn btn-primary" type="submit" value="Publish" tabindex="6" id="submit" name="submit">Avançar</button></p>
 						<input type="hidden" name="loops" value="<?php echo $perguntaCount ?>" />
 						<input type="hidden" name="action" value="new_<?php echo $thisPost->post_name;?>" />
 							<?php wp_nonce_field( 'new-post' ); ?>
@@ -114,7 +114,7 @@ $thisPost = $post;?>
 									<?php $perguntaCount++; $i++ ?>
 								<?php endwhile; endif; ?>
 
-								<p align="right"><button class="mt-3 form-control btn btn-lg btn-outline-primary" type="submit" value="Publish" tabindex="6" id="submit" name="submit">Enviar</button></p>
+								<p align="right"><button class="mt-3 form-control btn btn-lg btn-outline-primary" type="submit" value="Publish" tabindex="6" id="submit" name="submit">Avançar</button></p>
 								<input type="hidden" name="loops" value="<?php echo $perguntaCount ?>" />
 								<input type="hidden" name="action" value="new_plano" />
 								<?php wp_nonce_field( 'new-post' ); ?>

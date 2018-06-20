@@ -223,7 +223,7 @@ function create_post_types() {
       'has_archive' => true,
       'show_in_rest' => true,
       'menu_position' => 5,
-      'supports' => array('title', 'editor', 'custom-fields'),
+      'supports' => array('title', 'editor', 'custom-fields', 'thumbnail'),
       'menu_icon' => "dashicons-admin-tools"
     )
   );
@@ -237,7 +237,7 @@ function create_post_types() {
       'has_archive' => true,
       'show_in_rest' => true,
       'menu_position' => 5,
-      'supports' => array('title', 'editor', 'custom-fields'),
+      'supports' => array('title', 'editor', 'custom-fields', 'thumbnail'),
       'menu_icon' => "dashicons-admin-tools"
     )
   );
@@ -251,7 +251,7 @@ function create_post_types() {
       'has_archive' => true,
       'show_in_rest' => true,
       'menu_position' => 5,
-      'supports' => array('title', 'editor', 'custom-fields'),
+      'supports' => array('title', 'editor', 'custom-fields', 'thumbnail'),
       'menu_icon' => "dashicons-welcome-learn-more"
     )
   );

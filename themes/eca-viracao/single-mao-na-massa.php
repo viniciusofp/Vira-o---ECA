@@ -13,10 +13,11 @@
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-12 col-md-10 the-post">
+					<a href="#" onclick="window.history.back()"><i class="fa fa-arrow-left mr-2"></i>Voltar</a>
 					<div class="divisor"></div>
 					<h1 class="big"><?php the_title(); ?></h1>
 					<div class="mb-1">
-						<small><?php the_date(); ?></small>
+
 					</div>
 					<?php the_post_thumbnail(); ?>
 					<?php the_content(); ?>

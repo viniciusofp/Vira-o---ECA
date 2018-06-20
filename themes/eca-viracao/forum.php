@@ -1,18 +1,10 @@
 <?php get_header(); ?>
 <?php if (have_posts()): while(have_posts()) : the_post(); ?>
-	<div class="single-header">
-		<div class="container">
-			<div class="row">
-				<div class="col-12">
-					<h1><?php the_title(); ?></h1>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="single-content">
+	<div class="single-content forum">
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-12 col-md-9 the-post">
+					<h1><?php the_title(); ?></h1>
 					<?php the_content(); ?>
 				</div>
 				<div class="col-12 col-md-3 the-post">

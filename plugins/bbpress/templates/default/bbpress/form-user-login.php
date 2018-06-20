@@ -25,7 +25,7 @@
 
 		<div class="bbp-remember-me form-check">
 			<input class="form-check-input" type="checkbox" name="rememberme" value="forever" <?php checked( bbp_get_sanitize_val( 'rememberme', 'checkbox' ) ); ?>
-			<label class="form-check-label"= for="rememberme"><?php _e( 'Keep me signed in', 'bbpress' ); ?></label>
+			<label class="form-check-label"= for="rememberme">Lembrar-me</label>
 		</div>
 
 		<?php do_action( 'login_form' ); ?>
@@ -41,3 +41,6 @@
 		</div>
 	</fieldset>
 </form>
+		<div class="text-center mt-3">
+			<a href="<?php echo home_url('/?page_id=13') ?>" style="color: #4A268B"><strong>Registrar novo usuário</strong></a>
+		</div>

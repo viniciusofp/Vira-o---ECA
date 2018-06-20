@@ -97,7 +97,6 @@
 	p {
 		max-width: 500px;
 		margin: 0 auto;
-		font-family: $rounded;
 	}
 	h1 {
 		color: $white;
@@ -116,6 +115,7 @@
 		color: $white;
 		font-family: $rounded;
 		font-weight: bolder;
+		width: auto;
 		&:hover {
 			background: darken($purple, 10%);
 		}
