@@ -14,7 +14,7 @@
 	</div><!-- #content -->
 
 <div class="footer">
-	<div class="menu-row">
+<!-- 	<div class="menu-row">
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-3 col-lg-1">
@@ -25,9 +25,9 @@
 				</div>
 			</div>
 		</div>	
-	</div>
+	</div> -->
 	
-	<div class="container">
+	<div class="container pt-5">
 		<div class="row">
 			<div class="col-sm-6 col-lg-3">
 				<?php if ( is_active_sidebar( 'contato-footer' ) ) : ?>
@@ -45,7 +45,9 @@
 				<?php if ( is_active_sidebar( 'creditos-footer' ) ) : ?>
 						<?php dynamic_sidebar( 'creditos-footer' ); ?>
 				<?php endif; ?>
-				<a target="_blank" href="http://viracao.org/"><img src="<?php echo get_template_directory_uri(); ?>/img/viracao-logo.png" alt="" class="mb-3"></a>
+			</div>
+			<div class="col-12 mt-3 text-center">
+				<a target="_blank" href="http://viracao.org/"><img src="<?php echo get_template_directory_uri(); ?>/img/viracao-logo.png" alt="" class="footer-brand"></a>
 			</div>
 
 		</div>

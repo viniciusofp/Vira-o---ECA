@@ -137,8 +137,8 @@ function eca_viracao_widgets_init() {
 		'description'   => esc_html__( 'Add widgets here.', 'eca-viracao' ),
 		'before_widget' => '',
 		'after_widget'  => '',
-		'before_title'  => '',
-		'after_title'   => '',
+		'before_title'  => '<h5 class="widget-title">',
+		'after_title'   => '</h5>',
 	) );
 }
 add_action( 'widgets_init', 'eca_viracao_widgets_init' );
