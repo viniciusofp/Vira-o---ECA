@@ -53,7 +53,14 @@
 							<div class="col-12">
 								<a href="<?php the_permalink(); ?>">
 									<div class="rapidinhas-item">
-										<?php the_post_thumbnail('thumbnail') ?>
+										<?php if (has_post_thumbnail()): ?>
+										<?php the_post_thumbnail('thumbnail') ?>	
+										<?php else : ?>
+											<div class="text-center" style="padding: 56px 15px; background: #ddd">
+												<?php echo wp_get_attachment_image( get_theme_mod( 'custom_logo' ), 'full' ); ?>
+											</div>
+											
+										<?php endif; ?>
 										<div class="meta">
 											<h2><?php the_title(); ?></h2>
 											<?php the_excerpt(); ?>
