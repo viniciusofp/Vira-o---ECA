@@ -31,13 +31,13 @@
 						if ( $the_query->have_posts() ) : ?>
 							<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
 							<div class="col-6 col-lg-4">
+								<a href="<?php the_permalink(); ?>">
 									<div class="rapidinhas-item">
-										<a href="<?php the_permalink(); ?>">
 										<?php if (has_post_thumbnail()): ?>
 										<?php the_post_thumbnail('thumbnail') ?>	
 										<?php else : ?>
 											<div class="text-center" style="padding: 56px 15px; background: #ddd">
-												<?php the_custom_logo(); ?>
+												<?php echo wp_get_attachment_image( get_theme_mod( 'custom_logo' ), 'full' ); ?>
 											</div>
 											
 										<?php endif; ?>
@@ -46,8 +46,8 @@
 											<h2><?php the_title(); ?></h2>
 											<?php the_excerpt(); ?>
 										</div>
-										</a>
 									</div>
+								</a>
 							</div>
 							<?php endwhile; ?>
 
