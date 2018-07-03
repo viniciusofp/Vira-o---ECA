@@ -1,5 +1,6 @@
 <?php get_header(); ?>
 <?php if (have_posts()): while(have_posts()) : the_post(); ?>
+	<?php if (has_post_thumbnail()): ?>
 	<div class="single-header header-foto" style="background-image: url(<?php echo the_post_thumbnail_url('full'); ?>)">
 		<div class="container">
 			<div class="row">
@@ -9,13 +10,24 @@
 			</div>
 		</div>
 	</div>
+	<?php else: ?>
+	<div class="single-header">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<h1>Rapidinhas</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+	<?php endif; ?>
 	<div class="single-content">
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-12 col-md-8 the-post">
 					<div class="divisor"></div>
 					<h1><?php the_title(); ?></h1>
-					<div class="mb-1">
+					<div class="mb-4">
 						<small><?php the_date(); ?></small>
 					</div>
 					<?php the_content(); ?>
