@@ -64,9 +64,18 @@
 					<?php endwhile; else : endif; ?>
 					<button class="btn btn-primary btn-lg d-none" onclick="resultado()">Veja seu resultado no quiz!</button>
 					<div class="quiz-resultado d-none">
-						<p class="resultado1 d-none"><?php the_field('resultado1'); ?></p>
-						<p class="resultado2 d-none"><?php the_field('resultado2'); ?></p>
-						<p class="resultado3 d-none"><?php the_field('resultado3'); ?></p>
+						<div class="resultado1 d-none">
+							<h2 class="resultadoLabel"><?php echo get_field_object('resultado1')[ 'label'] ?></h2>
+							<p><?php the_field('resultado1'); ?></p>
+						</div>
+						<div class="resultado2 d-none">
+							<h2 class="resultadoLabel"><?php echo get_field_object('resultado2')[ 'label'] ?></h2>
+							<p><?php the_field('resultado2'); ?></p>
+						</div>
+						<div class="resultado3 d-none">
+							<h2 class="resultadoLabel"><?php echo get_field_object('resultado3')[ 'label'] ?></h2>
+							<p><?php the_field('resultado3'); ?></p>
+						</div>
 					</div>
 	
 				</div>
@@ -153,7 +162,6 @@
 		var opcoes = jQuery(this).closest('.quiz-options').children();
 
 		opcoes.each(function(i) {
-			console.log(opcoes[i])
 			if (jQuery(opcoes[i]).attr('data-value') == 'true') {
 				jQuery(opcoes[i]).addClass('certa')
 				jQuery(opcoes[i]).children('h6').empty().append('<i class="fas fa-check"></i>');
@@ -178,12 +186,12 @@
 					certas++
 				}
 			})
-			console.log(checked)
 		})
 		if (checked == perguntas.length) {
 			ready = true;
-			console.log('CABO')
-			jQuery('.quiz-resultado').removeClass('d-none').prepend('<p class="lead">Você acertou <b>' + certas + '</b> de <b>' + perguntas.length + '</b> perguntas.</p>');
+			jQuery('.quiz-resultado').removeClass('d-none')
+			var answer = '<p class="lead">Você acertou <b>' + certas + '</b> de <b>' + perguntas.length + '</b> perguntas.</p>';
+			jQuery('.quiz-resultado').prepend(answer);
 			if (certas < 4) {
 				jQuery('.resultado1').removeClass('d-none');
 			} else if (certas < 8) {
