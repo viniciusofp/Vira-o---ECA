@@ -74,7 +74,7 @@
 				<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
 				<div class="col-12 col-md conceito-home">
 					<a href="<?php the_permalink(); ?>">
-						<div class="icon"><?php the_post_thumbnail('thumbnail'); ?></div>
+						<div class="icon"><img src="<?php the_field('icon'); ?>"></div>
 						<h2><?php the_title(); ?></h2>
 					</a>
 				</div>
