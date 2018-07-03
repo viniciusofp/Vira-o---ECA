@@ -46,8 +46,8 @@
 						<?php dynamic_sidebar( 'creditos-footer' ); ?>
 				<?php endif; ?>
 			</div>
-			<div class="col-12 mt-3 text-center">
-				<a target="_blank" href="http://viracao.org/"><img src="<?php echo get_template_directory_uri(); ?>/img/viracao-logo.png" alt="" class="footer-brand"></a>
+			<div class="col-12 mt-3 text-center footer-brand">
+				<a target="_blank" href="http://viracao.org/"><img src="<?php echo get_template_directory_uri(); ?>/img/viracao-logo.png" alt=""></a>
 			</div>
 
 		</div>
