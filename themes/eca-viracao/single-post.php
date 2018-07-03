@@ -1,5 +1,7 @@
 <?php get_header(); ?>
-<?php if (have_posts()): while(have_posts()) : the_post(); ?>
+<?php if (have_posts()): while(have_posts()) : the_post(); 
+$postID = get_the_ID();
+?>
 	<?php if (has_post_thumbnail()): ?>
 	<div class="single-header header-foto" style="background-image: url(<?php echo the_post_thumbnail_url('full'); ?>)">
 		<div class="container">
@@ -44,6 +46,7 @@
 						$args = array(
 							'post_type' => 'post',
 						  'posts_per_page' => 3,
+						  'post__not_in' =>  array($postID)
 						);
 
 						$the_query = new WP_Query( $args ); 
