@@ -68,3 +68,16 @@ a.bbp-author-name {
 .bbp-reply-content {
 	font-size: 16px;
 }
+
+.novo-topico {
+	display: inline-block;
+	background: $purple;
+	color: #fff;
+	border-radius: 5px;
+	padding: 5px 10px;
+	float: right;
+	margin-top: 10px;
+	&:hover {
+		background: #360060;
+	}
+}
