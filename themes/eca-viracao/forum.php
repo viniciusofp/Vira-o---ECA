@@ -4,6 +4,11 @@
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-12 col-md-9 the-post">
+
+					<a href="<?php echo home_url('/?page_id=11') ?>">
+						<div class="novo-topico">Criar novo tópico</div>
+					</a>
+						
 					<h1><?php the_title(); ?></h1>
 					<?php the_content(); ?>
 				</div>
